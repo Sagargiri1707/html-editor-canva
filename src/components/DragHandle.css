@@ -2,19 +2,23 @@
   position: fixed;
   width: 28px;
   height: 28px;
-  display: flex;
+  display: flex !important;
   align-items: center;
   justify-content: center;
-  background: var(--color-surface, #ffffff);
-  border: 1px solid var(--color-border, #e0e0e0);
-  border-radius: var(--radius-sm, 4px);
-  color: var(--color-text-muted, #6b7280);
-  cursor: grab;
-  z-index: 999997;
+  background: var(--color-surface, #ffffff) !important;
+  border: 1px solid var(--color-border, #e0e0e0) !important;
+  border-radius: var(--radius-sm, 4px) !important;
+  color: var(--color-text-muted, #6b7280) !important;
+  cursor: grab !important;
+  z-index: 999997 !important;
   transition: all 0.15s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
   animation: handleFadeIn 0.12s ease-out;
-  pointer-events: auto;
+  pointer-events: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 14px !important;
+  line-height: 1 !important;
 }
 
 @keyframes handleFadeIn {

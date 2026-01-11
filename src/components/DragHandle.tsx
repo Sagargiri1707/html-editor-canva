@@ -37,12 +37,19 @@ export function DragHandle({ editorRef, onDragStart, findBlockParent }: DragHand
     const rect = block.getBoundingClientRect()
     const editorRect = editorRef.current.getBoundingClientRect()
     
-    setPosition({
-      x: editorRect.left - 36,
-      y: rect.top + (rect.height / 2) - 12,
-      visible: true,
-      targetElement: block,
-    })
+    // Position handle to the left of the editor, ensuring it's visible
+    const handleX = Math.max(8, editorRect.left - 36)
+    const handleY = rect.top + (rect.height / 2) - 14
+    
+    // Only show if the block is within the visible editor area
+    if (rect.top >= editorRect.top && rect.bottom <= editorRect.bottom + 50) {
+      setPosition({
+        x: handleX,
+        y: handleY,
+        visible: true,
+        targetElement: block,
+      })
+    }
   }, [editorRef])
 
   const hideHandle = useCallback((delay = 150) => {

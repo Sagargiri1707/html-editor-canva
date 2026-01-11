@@ -17,6 +17,8 @@ const ALLOWED_TAGS = [
   'table', 'thead', 'tbody', 'tfoot', 'tr', 'th', 'td', 'caption', 'colgroup', 'col',
   // Block elements
   'blockquote', 'pre', 'code', 'hr',
+  // External resources (CDN scripts, styles) - with restrictions
+  'link', 'script',
   // Other
   'address', 'article', 'aside', 'details', 'summary', 'section', 'nav', 'header', 'footer', 'main',
 ]
@@ -27,11 +29,13 @@ const ALLOWED_ATTR = [
   // Links
   'href', 'target', 'rel',
   // Media
-  'src', 'alt', 'width', 'height', 'loading', 'srcset', 'sizes',
+  'src', 'alt', 'width', 'height', 'loading', 'srcset', 'sizes', 'crossorigin',
   // Video
   'controls', 'autoplay', 'loop', 'muted', 'poster', 'preload',
   // Tables
   'colspan', 'rowspan', 'scope', 'headers',
+  // Script/Link tags (for CDN resources)
+  'type', 'integrity', 'async', 'defer', 'charset',
   // Data attributes (for editor tracking)
   'data-*',
 ]
@@ -42,8 +46,11 @@ export function sanitizeHtml(html: string): string {
     ALLOWED_TAGS,
     ALLOWED_ATTR,
     ALLOW_DATA_ATTR: true,
-    // Keep safe URLs only
-    ALLOWED_URI_REGEXP: /^(?:(?:https?|mailto|tel):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i,
+    // Keep safe URLs only (allow https, http, data URIs for images, mailto, tel)
+    ALLOWED_URI_REGEXP: /^(?:(?:https?|data|mailto|tel):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i,
+    // Add hook to ensure script tags only load from CDN
+    ADD_TAGS: ['link', 'script'],
+    ADD_ATTR: ['crossorigin', 'integrity', 'async', 'defer', 'charset', 'type'],
   })
 }
 

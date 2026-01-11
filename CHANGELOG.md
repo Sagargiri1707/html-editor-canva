@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.2] - 2026-01-11
+
+### Fixed
+- **CSS Isolation**: Added comprehensive `EditorIsolation.css` layer to prevent external CSS (Tailwind, Bootstrap, etc.) from overriding editor styles
+- **Image Loading**: Fixed images not loading properly in client apps by ensuring proper display properties, object-fit, and data URI support
+- **Drag Handle Visibility**: Fixed drag handle not appearing by improving positioning logic to account for viewport boundaries
+- **Max Width**: Restored `max-width: 900px` for better layout control while maintaining responsive width
+- **External Dependencies**: Allowed safe loading of CDN resources (Tailwind, Swiper, etc.) through improved sanitization
+
+### Added
+- `EditorIsolation.css` - New CSS isolation layer using `all: revert` and `!important` rules
+- Support for `<link>` and `<script>` tags with proper sanitization for CDN resources
+- Additional allowed attributes: `crossorigin`, `integrity`, `async`, `defer`, `charset`, `type`
+- Data URI support for images in sanitization
+
+### Changed
+- All toolbar, popover, and UI element styles now use `!important` to ensure they work in any environment
+- Added explicit `box-sizing: border-box` to all elements
+- Improved image rendering with `display: block`, `object-fit: contain`, and proper backgrounds
+- Drag handle positioning now uses `Math.max(8, editorRect.left - 36)` to ensure visibility
+- Enhanced CSS specificity to prevent conflicts with global styles
+- Sanitizer now allows safe external resources while maintaining XSS protection
+
 ## [1.0.1] - 2026-01-11
 
 ### Fixed

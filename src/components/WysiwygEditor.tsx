@@ -9,6 +9,7 @@ import { DragHandle } from "./DragHandle";
 import { DropIndicator } from "./DropIndicator";
 import { ImageResizer } from "./ImageResizer";
 import { ShortcutsOverlay } from "./ShortcutsOverlay";
+import './EditorIsolation.css'
 import './WysiwygEditor.css'
 
 type BlockType = 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'

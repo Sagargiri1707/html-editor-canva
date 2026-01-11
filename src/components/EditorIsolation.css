@@ -1,0 +1,172 @@
+/* 
+ * CSS Isolation Layer
+ * Prevents external styles (Tailwind, Bootstrap, etc.) from affecting the editor
+ */
+
+/* Isolate all editor components from external styles */
+.wysiwyg-editor-wrapper,
+.wysiwyg-editor-wrapper *,
+.floating-toolbar,
+.floating-toolbar *,
+.link-popover,
+.link-popover *,
+.color-picker,
+.color-picker *,
+.font-picker,
+.font-picker *,
+.insert-menu,
+.insert-menu *,
+.media-toolbar,
+.media-toolbar *,
+.drag-handle,
+.drag-handle *,
+.shortcuts-overlay,
+.shortcuts-overlay *,
+.image-resizer,
+.image-resizer * {
+  /* Reset common utility class interference */
+  all: revert;
+}
+
+/* Ensure box-sizing is consistent */
+.wysiwyg-editor-wrapper,
+.wysiwyg-editor-wrapper *,
+.wysiwyg-editor-wrapper *::before,
+.wysiwyg-editor-wrapper *::after {
+  box-sizing: border-box !important;
+}
+
+/* Prevent Tailwind/utility CSS from affecting buttons */
+.wysiwyg-editor-wrapper button,
+.floating-toolbar button,
+.link-popover button,
+.color-picker button,
+.font-picker button,
+.insert-menu button,
+.media-toolbar button {
+  all: revert;
+  box-sizing: border-box !important;
+  font-family: inherit !important;
+  cursor: pointer !important;
+}
+
+/* Prevent external styles from affecting inputs */
+.wysiwyg-editor-wrapper input,
+.link-popover input,
+.color-picker input {
+  all: revert;
+  box-sizing: border-box !important;
+  font-family: inherit !important;
+}
+
+/* Ensure images render properly regardless of external styles */
+.wysiwyg-editor img {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  object-fit: contain !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  /* Override any lazy loading or aspect ratio utilities */
+  aspect-ratio: auto !important;
+}
+
+/* Ensure videos render properly */
+.wysiwyg-editor video {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Prevent external link styles from interfering */
+.wysiwyg-editor a {
+  text-decoration: underline !important;
+  color: var(--color-accent, #4f46e5) !important;
+}
+
+/* Prevent list style resets */
+.wysiwyg-editor ul,
+.wysiwyg-editor ol {
+  list-style-position: outside !important;
+  padding-left: 1.5rem !important;
+}
+
+.wysiwyg-editor ul {
+  list-style-type: disc !important;
+}
+
+.wysiwyg-editor ol {
+  list-style-type: decimal !important;
+}
+
+/* Prevent heading resets */
+.wysiwyg-editor h1,
+.wysiwyg-editor h2,
+.wysiwyg-editor h3,
+.wysiwyg-editor h4,
+.wysiwyg-editor h5,
+.wysiwyg-editor h6 {
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+  margin-top: 0 !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Prevent paragraph resets */
+.wysiwyg-editor p {
+  margin-top: 0 !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Ensure proper text rendering */
+.wysiwyg-editor {
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+}
+
+/* Prevent external z-index from interfering */
+.floating-toolbar,
+.link-popover,
+.color-picker,
+.font-picker,
+.insert-menu,
+.media-toolbar,
+.drag-handle,
+.shortcuts-overlay,
+.image-resizer,
+.drop-indicator {
+  position: fixed !important;
+  z-index: 999990 !important;
+}
+
+.shortcuts-overlay {
+  z-index: 1000000 !important;
+}
+
+.link-popover,
+.color-picker,
+.font-picker,
+.insert-menu,
+.asset-picker {
+  z-index: 999999 !important;
+}
+
+.floating-toolbar,
+.media-toolbar {
+  z-index: 999998 !important;
+}
+
+.drag-handle,
+.image-resizer {
+  z-index: 999997 !important;
+}
+
+.drop-indicator {
+  z-index: 999996 !important;
+}
+
