@@ -1,5 +1,5 @@
 import { useRef, useCallback, useEffect, useState } from 'react'
-import { sanitizeHtml, sanitizeForOutput, containsDangerousContent } from '../utils/sanitize'
+import { sanitizeHtml, sanitizeForOutput } from '../utils/sanitize'
 import { useTextFormatting } from '../hooks/useTextFormatting'
 import { useHistory } from '../hooks/useHistory'
 import { useDragAndDrop } from "../hooks/useDragAndDrop";
@@ -49,7 +49,6 @@ export function WysiwygEditor({
   const isInternalChange = useRef(false);
   const isHistoryChange = useRef(false);
   const debounceTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
-  const [showWarning, setShowWarning] = useState(false);
   const [showShortcuts, setShowShortcuts] = useState(false);
   const [selectedMedia, setSelectedMedia] = useState<
     HTMLImageElement | HTMLVideoElement | null
@@ -291,18 +290,11 @@ export function WysiwygEditor({
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [handleUndo, handleRedo, selectedMedia, handleMediaDelete]);
 
-  // Sanitize and initialize editor content
+  // Initialize editor content
   useEffect(() => {
     if (editorRef.current && !isInternalChange.current) {
-      if (containsDangerousContent(html)) {
-        setShowWarning(true);
-        setTimeout(() => setShowWarning(false), 3000);
-      }
-
-      const sanitized = sanitizeHtml(html);
-
-      if (editorRef.current.innerHTML !== sanitized) {
-        editorRef.current.innerHTML = sanitized;
+      if (editorRef.current.innerHTML !== html) {
+        editorRef.current.innerHTML = html;
       }
     }
     isInternalChange.current = false;
@@ -349,12 +341,6 @@ export function WysiwygEditor({
         dragState.isDragging ? "is-dragging" : ""
       }`}
     >
-      {showWarning && (
-        <div className="wysiwyg-warning">
-          ⚠️ Potentially unsafe content was sanitized
-        </div>
-      )}
-
       {/* Floating toolbar appears on text selection */}
       {!dragState.isDragging && (
         <FloatingToolbar
