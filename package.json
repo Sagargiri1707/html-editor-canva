@@ -1,0 +1,70 @@
+{
+  "name": "html-wysiwyg-editor",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/wysiwyg-editor.umd.cjs",
+  "module": "./dist/wysiwyg-editor.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/wysiwyg-editor.js",
+      "require": "./dist/wysiwyg-editor.umd.cjs"
+    },
+    "./style.css": "./dist/wysiwyg-editor.css"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "build:lib": "vite build --mode lib",
+    "preview": "vite preview",
+    "lint": "eslint src --ext ts,tsx",
+    "prepublishOnly": "npm run build:lib"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "dependencies": {
+    "dompurify": "^3.3.1",
+    "html-wysiwyg-editor": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/dompurify": "^3.0.5",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.2",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.0",
+    "vite-plugin-dts": "^4.5.4"
+  },
+  "keywords": [
+    "wysiwyg",
+    "editor",
+    "html",
+    "react",
+    "contenteditable",
+    "rich-text",
+    "text-editor"
+  ],
+  "author": "",
+  "license": "MIT",
+  "description": "A lightweight, Canva-like WYSIWYG HTML editor for React",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-org/wysiwyg-editor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/wysiwyg-editor/issues"
+  },
+  "homepage": "https://github.com/your-org/wysiwyg-editor#readme"
+}

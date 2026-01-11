@@ -1,0 +1,87 @@
+.insert-menu {
+  position: fixed;
+  width: 220px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.16),
+    0 2px 8px rgba(0, 0, 0, 0.08);
+  z-index: 1002;
+  overflow: hidden;
+  animation: insertMenuIn 0.15s ease-out;
+}
+
+@keyframes insertMenuIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.insert-menu-header {
+  padding: 10px 14px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.insert-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 14px;
+  font-family: var(--font-family);
+  text-align: left;
+  background: transparent;
+  color: var(--color-text);
+  border: none;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+.insert-menu-item:hover {
+  background: var(--color-surface-hover);
+}
+
+.insert-menu-item:active {
+  background: var(--color-selection);
+}
+
+.insert-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.insert-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.insert-label {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.insert-desc {
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+

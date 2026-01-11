@@ -1,0 +1,199 @@
+.floating-toolbar {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 6px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.12),
+    0 1px 3px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+  animation: floatingToolbarIn 0.15s ease-out;
+}
+
+@keyframes floatingToolbarIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.floating-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 8px;
+  font-size: 14px;
+  font-family: var(--font-family);
+  background: transparent;
+  color: var(--color-text-muted);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.12s ease;
+  white-space: nowrap;
+}
+
+.floating-btn:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-text);
+}
+
+.floating-btn.active {
+  background: var(--color-accent);
+  color: white;
+}
+
+.floating-btn strong {
+  font-weight: 700;
+}
+
+.floating-btn em {
+  font-style: italic;
+}
+
+.floating-btn u {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.floating-btn s {
+  text-decoration: line-through;
+}
+
+/* Color button styles */
+.color-btn {
+  flex-direction: column;
+  gap: 2px;
+  padding: 4px 8px;
+}
+
+.color-icon {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.color-icon.bg-icon {
+  background: var(--color-surface-hover);
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+
+.color-bar {
+  width: 16px;
+  height: 3px;
+  border-radius: 1px;
+  border: 1px solid var(--color-border);
+}
+
+/* Font button */
+.font-btn {
+  font-weight: 600;
+  font-size: 13px;
+  padding: 0 10px;
+}
+
+/* Alignment buttons */
+.align-btn {
+  padding: 0 6px;
+}
+
+.align-btn svg {
+  display: block;
+}
+
+/* Insert button */
+.insert-btn {
+  font-size: 18px;
+  font-weight: 500;
+  padding: 0 8px;
+}
+/* Block type dropdown */
+.block-menu-wrapper {
+  position: relative;
+}
+
+.block-btn {
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.dropdown-arrow {
+  font-size: 10px;
+  opacity: 0.6;
+}
+
+.block-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+  min-width: 140px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.12),
+    0 1px 3px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  animation: menuIn 0.12s ease-out;
+}
+
+@keyframes menuIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.block-menu-item {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-family: var(--font-family);
+  text-align: left;
+  background: transparent;
+  color: var(--color-text);
+  border: none;
+  cursor: pointer;
+  transition: background 0.1s ease;
+}
+
+.block-menu-item:hover {
+  background: var(--color-surface-hover);
+}
+
+.block-menu-item.active {
+  background: var(--color-selection);
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+/* Toolbar divider */
+.toolbar-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--color-border);
+  margin: 0 4px;
+}
+
+/* Arrow/pointer - hidden in light theme for cleaner look */
+.floating-toolbar::after {
+  display: none;
+}

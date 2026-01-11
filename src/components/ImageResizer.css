@@ -1,0 +1,68 @@
+.image-resizer {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99;
+  border: 2px solid var(--color-accent);
+  border-radius: 4px;
+}
+
+.image-resizer.resizing {
+  border-style: dashed;
+}
+
+.resize-handle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--color-surface);
+  border: 2px solid var(--color-accent);
+  border-radius: 2px;
+  pointer-events: auto;
+  transition: transform 0.1s ease, background 0.1s ease;
+}
+
+.resize-handle:hover {
+  background: var(--color-accent);
+  transform: scale(1.2);
+}
+
+.resize-handle.nw {
+  top: -6px;
+  left: -6px;
+  cursor: nw-resize;
+}
+
+.resize-handle.ne {
+  top: -6px;
+  right: -6px;
+  cursor: ne-resize;
+}
+
+.resize-handle.sw {
+  bottom: -6px;
+  left: -6px;
+  cursor: sw-resize;
+}
+
+.resize-handle.se {
+  bottom: -6px;
+  right: -6px;
+  cursor: se-resize;
+}
+
+.size-indicator {
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  background: var(--color-text);
+  color: var(--color-surface);
+  font-size: 11px;
+  font-family: 'SF Mono', monospace;
+  font-weight: 500;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+

@@ -1,0 +1,45 @@
+# Source files (distributed as compiled)
+src/
+*.ts
+*.tsx
+!dist/**
+
+# Development files
+node_modules/
+.git/
+.gitignore
+.cursorignore
+.cursor/
+
+# Config files
+vite.config.ts
+tsconfig.json
+tsconfig.node.json
+tsconfig.build.json
+
+# Demo app files
+src/App.tsx
+src/App.css
+src/main.tsx
+index.html
+
+# Test files
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
+__tests__/
+
+# Documentation (keep README)
+ARCHITECTURE.md
+CONTRIBUTING.md
+docs/
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
