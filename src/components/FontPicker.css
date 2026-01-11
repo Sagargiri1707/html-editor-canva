@@ -2,15 +2,16 @@
   position: fixed;
   width: 220px;
   max-height: 360px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e0e0e0);
+  border-radius: var(--radius, 8px);
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.16),
     0 2px 8px rgba(0, 0, 0, 0.08);
-  z-index: 1002;
+  z-index: 999999;
   overflow: hidden;
   animation: fontPickerIn 0.15s ease-out;
+  pointer-events: auto;
 }
 
 @keyframes fontPickerIn {

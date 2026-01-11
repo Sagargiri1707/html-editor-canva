@@ -4,14 +4,15 @@
   align-items: center;
   gap: 2px;
   padding: 6px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e0e0e0);
+  border-radius: var(--radius, 8px);
   box-shadow: 
     0 4px 16px rgba(0, 0, 0, 0.12),
     0 1px 3px rgba(0, 0, 0, 0.08);
-  z-index: 1000;
+  z-index: 999998;
   animation: mediaToolbarIn 0.15s ease-out;
+  pointer-events: auto;
 }
 
 @keyframes mediaToolbarIn {
@@ -62,15 +63,16 @@
   position: fixed;
   width: 320px;
   max-height: 400px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e0e0e0);
+  border-radius: var(--radius, 8px);
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.16),
     0 2px 8px rgba(0, 0, 0, 0.08);
-  z-index: 1001;
+  z-index: 999999;
   overflow: hidden;
   animation: pickerIn 0.15s ease-out;
+  pointer-events: auto;
 }
 
 @keyframes pickerIn {

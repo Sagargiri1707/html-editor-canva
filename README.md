@@ -40,14 +40,18 @@ function App() {
   const [html, setHtml] = useState('<p>Hello World!</p>')
 
   return (
-    <WysiwygEditor
-      html={html}
-      onChange={setHtml}
-      placeholder="Start typing..."
-    />
+    <div style={{ width: '100%', maxWidth: '800px', margin: '0 auto' }}>
+      <WysiwygEditor
+        html={html}
+        onChange={setHtml}
+        placeholder="Start typing..."
+      />
+    </div>
   )
 }
 ```
+
+> **Note:** The editor takes 100% width of its container. Wrap it in a container with appropriate width constraints for your layout.
 
 ## Props
 
@@ -141,17 +145,44 @@ Override these CSS variables to customize the appearance:
 
 ```css
 :root {
-  --wysiwyg-font-family: 'Inter', system-ui, sans-serif;
-  --wysiwyg-radius: 8px;
-  --wysiwyg-radius-sm: 4px;
-  --wysiwyg-color-accent: #6366f1;
-  --wysiwyg-color-bg: #f5f5f7;
-  --wysiwyg-color-surface: #ffffff;
-  --wysiwyg-color-border: #e5e5e5;
-  --wysiwyg-color-text: #1a1a1a;
-  --wysiwyg-color-text-muted: #6b7280;
+  --font-family: 'Inter', system-ui, sans-serif;
+  --radius: 8px;
+  --radius-sm: 4px;
+  --color-accent: #4f46e5;
+  --color-accent-hover: #6366f1;
+  --color-bg: #f8f9fa;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f1f3f4;
+  --color-border: #e0e0e0;
+  --color-text: #1a1a1a;
+  --color-text-muted: #6b7280;
+  --color-selection: rgba(79, 70, 229, 0.15);
 }
 ```
+
+> **Note:** The editor includes fallback values for all CSS variables, so it will work even if these variables are not defined in your app.
+
+### Scrolling
+
+The editor has built-in scrolling with a max-height of 600px. You can customize this:
+
+```css
+.wysiwyg-editor {
+  max-height: 800px; /* Adjust as needed */
+}
+```
+
+### Z-Index Layers
+
+The editor uses high z-index values (999,996 - 1,000,000) to ensure UI elements appear above your app's content:
+
+- Shortcuts overlay: `1,000,000`
+- Popovers & pickers: `999,999`
+- Floating toolbar: `999,998`
+- Drag handle & resizer: `999,997`
+- Drop indicator: `999,996`
+
+If you need to adjust these, override the respective CSS classes.
 
 ## Advanced Usage
 
